@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <title> test dashboard </title>
+</head>
+
+<body>
+
+    <h3> Instructors</h3>
+
+    <div id="instructors">
+    </div>
+
+    <div id="gender">
+        <h3>Male</h3>
+        <span id="male_count"></span>
+
+        <h3>Female</h3>
+        <span id="female_count"></span>
+
+    </div>
+
+
+    <div id="age_stats">
+        <h3>Min Age</h3>
+        <span id="min_age"></span>
+
+        <h3>Max Age</h3>
+        <span id="max_age"></span>
+
+    </div>
+
+
+
+
+    <script src="data.js">
+    </script>
+
+    <script>
+        function minAgeofStudents(allstudents) {
+
+            var minAge = allstudents && allstudents[0]['age']
+            allstudents.forEach((student) => {
+                if (student.age > maxAge) {
+                    maxAge = student.age;
+                }
+            })
+
+            return minAge;
+        }
+
+        function maxAgeofStudents(allstudents) {
+            var maxAge = allstudents[0]['age']
+            allstudents.forEach((student) => {
+                if (student.age > maxAge) {
+                    maxAge = student.age;
+                }
+            })
+
+
+            return maxAge;
+        }
+
+
+        var instructorsHtml = document.getElementById('instructors')
+
+
+        Instructors.map((instructor) => {
+
+
+            const instructorDiv = document.createElement("div");
+            const instructorName = document.createElement("h3");
+            instructorName.innerText = instructor.name;
+
+            instructorsHtml.appendChild(instructorName);
+            const courses = document.createElement("p");
+            courses.innerText = instructor.courses.toString();
+            instructorsHtml.appendChild(courses);
+
+        })
+
+
+        var maleStudents = Students.filter(student =>
+            student.gender === "male"
+        )
+
+        var femaleStudents = Students.filter(student =>
+            student.gender === "male"
+        )
+
+        document.getElementById('male_count').innerText = maleStudents.length
+
+        document.getElementById('female_count').innerText = femaleStudents.length
+
+        var minAge = minAgeofStudents(Students);
+        document.getElementById("min_age").innerText = minAge
+
+        var maxAge = maxAgeofStudents(Students);
+        document.getElementById("max_age").innerText = maxAge
+    </script>
+
+</body>
+
+</html>
